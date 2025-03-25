@@ -1,4 +1,4 @@
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
 // import style from "../../styles/container.module.scss";
 
