@@ -1,0 +1,35 @@
+@import "https://fonts.fontstorage.com/import/lato.css";
+
+$color-background: #1a1a1a;
+
+* {
+    margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	// font-family: 'Open Sans';
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato';
+    font-weight: 400;
+    line-height: 1.5;
+    background: linear-gradient(
+        to bottom,
+        $color-background,
+        #2a2a2a
+      );
+}
+
+.mainContent {
+    margin-top: 75px;
+}
+
+a {
+    text-decoration: none;
+}
