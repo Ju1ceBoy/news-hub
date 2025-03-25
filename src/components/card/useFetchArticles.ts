@@ -35,6 +35,11 @@ export const groupArticlesByDay = (articles: Article[]) => {
   return grouped;
 };
 
+fetch('https://cors-anywhere.herokuapp.com/corsdemo')
+  .then(response => response.text())
+  .then(console.log)
+  .catch(console.error);
+
 const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
   // const url = `/nyt-api/svc/archive/v1/${year}/${month}.json`;
   // const url = `https://api.nytimes.com/api/svc/archive/v1/${year}/${month}.json`;  
