@@ -10,7 +10,7 @@ export default defineConfig({
       '/api': {
         target: 'https://api.nytimes.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, '/svc'), // Убираем /api из пути
       }
     }
   }
