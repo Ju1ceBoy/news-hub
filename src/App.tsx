@@ -34,8 +34,8 @@ function App() {
           <Header/>
           <div className={styles.mainContent}>
             <Routes>
-              <Route path="/" element={<NewsArchive />} />
-              <Route path="/another" element={<AnotherComponent />} />
+              <Route path="/news-hub" element={<NewsArchive />} />
+              <Route path="/general/news-hub" element={<AnotherComponent />} />
             </Routes>
           </div>
       </Router>
