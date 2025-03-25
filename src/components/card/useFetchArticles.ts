@@ -36,7 +36,7 @@ export const groupArticlesByDay = (articles: Article[]) => {
 };
 
 const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
-  const url = `/nyt-api/svc/archive/v1/${year}/${month}.json`;
+  const url = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
   
   const response = await axios.get<ApiResponse>(url, {
     params: {
