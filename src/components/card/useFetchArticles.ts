@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const NYT_API_KEY = "vEJwp3nmtqMIO6FDqQwyQdjbTzJcbdAh";
+const NYT_API_KEY = import.meta.env.VITE_NYT_API_KEY;
 
 export interface Article {
   headline: {
@@ -36,7 +36,9 @@ export const groupArticlesByDay = (articles: Article[]) => {
 };
 
 const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+  // const url = `/nyt-api/svc/archive/v1/${year}/${month}.json`;
   const url = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+  
   
   const response = await axios.get<ApiResponse>(url, {
     params: {

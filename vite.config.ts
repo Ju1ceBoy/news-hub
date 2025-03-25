@@ -7,13 +7,10 @@ export default defineConfig({
   base: '/news-hub/',  // Например: '/news-archive/'
   server: {
     proxy: {
-      '/nyt-api': {
+      '/api': {
         target: 'https://api.nytimes.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/nyt-api/, ''),
-        headers: {
-          'Accept': 'application/json',
-        }
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }
