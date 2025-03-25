@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const NYT_API_KEY = 'vEJwp3nmtqMIO6FDqQwyQdjbTzJcbdAh';
+const NYT_API_KEY = import.meta.env.VITE_NYT_API_KEY;
 
 export interface Article {
   headline: {
