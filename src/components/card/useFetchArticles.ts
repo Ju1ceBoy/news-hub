@@ -40,22 +40,26 @@ fetch('https://cors-anywhere.herokuapp.com/corsdemo')
   .then(console.log)
   .catch(console.error);
 
-const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
-  // const url = `/nyt-api/svc/archive/v1/${year}/${month}.json`;
-  // const url = `https://api.nytimes.com/api/svc/archive/v1/${year}/${month}.json`;  
-  const url = `https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
-
-  const response = await axios.get<ApiResponse>(url, {
-    params: {
-      "api-key": NYT_API_KEY,
-    },
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
+  const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+    // Предварительно активируйте cors-anywhere (откройте в браузере):
+    // https://cors-anywhere.herokuapp.com/corsdemo
   
-  return response.data.response.docs;
-};
+    const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+    const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
+  
+    const response = await axios.get<ApiResponse>(proxyUrl, {
+      params: {
+        "api-key": NYT_API_KEY,
+      },
+      headers: {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', // Для cors-anywhere
+      }
+    });
+    
+    return response.data.response.docs;
+  };
+  
 
 export const useFetchArticles = (year: number, month: number) => {
   return useQuery({
