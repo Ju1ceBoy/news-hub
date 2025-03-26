@@ -47,7 +47,6 @@ export function Header() {
                 </div>
                 <a className={styles.logo__wrapper} href="/news-hub">
                     <span className={styles.logo__title}>NEWS PUB <span className={styles.logo__small}>by Ju1ceBoy</span></span>
-                    {/* <img className={styles.logo} src={logo} alt="BESIDER" /> */}
                 </a>
             </div>
         </div>
