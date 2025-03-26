@@ -45,7 +45,7 @@ export function Header() {
                         <li className={styles.menu__navigation_li}><a href="/sports">SPORTS</a></li>
                     </ul>
                 </div>
-                <a className={styles.logo__wrapper} href="/">
+                <a className={styles.logo__wrapper} href="/news-hub">
                     <span className={styles.logo__title}>NEWS PUB <span className={styles.logo__small}>by Ju1ceBoy</span></span>
                     {/* <img className={styles.logo} src={logo} alt="BESIDER" /> */}
                 </a>

@@ -40,25 +40,46 @@ fetch('https://cors-anywhere.herokuapp.com/corsdemo')
   .then(console.log)
   .catch(console.error);
 
-  const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
-    // Предварительно активируйте cors-anywhere (откройте в браузере):
-    // https://cors-anywhere.herokuapp.com/corsdemo
+
+  // 🔥 Замените этот URL на ваш Vercel-прокси
+const CORS_PROXY = "https://cors-anywhere-ju1ceboys-projects.vercel.app";
+
+const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+  const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+  const proxyUrl = `${CORS_PROXY}/${apiUrl}`; // 👈 Используем свой прокси
+
+  const response = await axios.get<ApiResponse>(proxyUrl, {
+    params: {
+      "api-key": NYT_API_KEY,
+    },
+    headers: {
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest', // Важно для CORS Anywhere
+    }
+  });
   
-    const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
-    const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
+  return response.data.response.docs;
+};
+
+  // const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+  //   // Предварительно активируйте cors-anywhere (откройте в браузере):
+  //   // https://cors-anywhere.herokuapp.com/corsdemo
   
-    const response = await axios.get<ApiResponse>(proxyUrl, {
-      params: {
-        "api-key": NYT_API_KEY,
-      },
-      headers: {
-        'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest', // Для cors-anywhere
-      }
-    });
+  //   const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+  //   const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
+  
+  //   const response = await axios.get<ApiResponse>(proxyUrl, {
+  //     params: {
+  //       "api-key": NYT_API_KEY,
+  //     },
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'X-Requested-With': 'XMLHttpRequest', // Для cors-anywhere
+  //     }
+  //   });
     
-    return response.data.response.docs;
-  };
+  //   return response.data.response.docs;
+  // };
   
 
 export const useFetchArticles = (year: number, month: number) => {
