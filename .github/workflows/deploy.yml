@@ -6,6 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Даём права на запись
     env:
       VITE_NYT_API_KEY: ${{ secrets.NYT_API_KEY }}  # Используем секрет
 
