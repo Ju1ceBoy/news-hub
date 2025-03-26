@@ -41,45 +41,45 @@ fetch('https://cors-anywhere.herokuapp.com/corsdemo')
   .catch(console.error);
 
 
-  // 🔥 Замените этот URL на ваш Vercel-прокси
-const CORS_PROXY = "https://cors-anywhere-ju1ceboys-projects.vercel.app";
+//   // 🔥 Замените этот URL на ваш Vercel-прокси
+// const CORS_PROXY = "https://cors-anywhere-ju1ceboys-projects.vercel.app";
 
-const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
-  const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
-  const proxyUrl = `${CORS_PROXY}/${apiUrl}`; // 👈 Используем свой прокси
+// const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+//   const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+//   const proxyUrl = `${CORS_PROXY}/${apiUrl}`; // 👈 Используем свой прокси
 
-  const response = await axios.get<ApiResponse>(proxyUrl, {
-    params: {
-      "api-key": NYT_API_KEY,
-    },
-    headers: {
-      'Accept': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest', // Важно для CORS Anywhere
-    }
-  });
+//   const response = await axios.get<ApiResponse>(proxyUrl, {
+//     params: {
+//       "api-key": NYT_API_KEY,
+//     },
+//     headers: {
+//       'Accept': 'application/json',
+//       'X-Requested-With': 'XMLHttpRequest', // Важно для CORS Anywhere
+//     }
+//   });
   
-  return response.data.response.docs;
-};
+//   return response.data.response.docs;
+// };
 
-  // const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
-  //   // Предварительно активируйте cors-anywhere (откройте в браузере):
-  //   // https://cors-anywhere.herokuapp.com/corsdemo
+  const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
+    // Предварительно активируйте cors-anywhere (откройте в браузере):
+    // https://cors-anywhere.herokuapp.com/corsdemo
   
-  //   const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
-  //   const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
+    const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json`;
+    const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
   
-  //   const response = await axios.get<ApiResponse>(proxyUrl, {
-  //     params: {
-  //       "api-key": NYT_API_KEY,
-  //     },
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'X-Requested-With': 'XMLHttpRequest', // Для cors-anywhere
-  //     }
-  //   });
+    const response = await axios.get<ApiResponse>(proxyUrl, {
+      params: {
+        "api-key": NYT_API_KEY,
+      },
+      headers: {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', // Для cors-anywhere
+      }
+    });
     
-  //   return response.data.response.docs;
-  // };
+    return response.data.response.docs;
+  };
   
 
 export const useFetchArticles = (year: number, month: number) => {
