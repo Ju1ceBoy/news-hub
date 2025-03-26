@@ -35,6 +35,11 @@ export const groupArticlesByDay = (articles: Article[]) => {
   return grouped;
 };
 
+fetch('https://cors-anywhere.herokuapp.com/corsdemo')
+  .then(response => response.text())
+  .then(console.log)
+  .catch(console.error);
+
   const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
     // Предварительно активируйте cors-anywhere (откройте в браузере):
     // https://cors-anywhere.herokuapp.com/corsdemo
