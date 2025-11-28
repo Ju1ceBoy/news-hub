@@ -1,5 +1,5 @@
 import React from "react";
-import { Article } from "./useFetchArticles"; // Импортируем тип Article
+import { Article } from "../../types/article";
 
 interface ArticleListProps {
   articles: Article[]; // Принимаем массив статей как пропс
