@@ -8,10 +8,10 @@ export const ARTICLES_INCREMENT = 5;
 export const LOAD_MORE_DELAY = 1000; // мс
 
 // Настройки автообновления
-export const AUTO_REFRESH_INTERVAL = 10000; // мс (10 секунд)
+export const AUTO_REFRESH_INTERVAL = 120000; // мс (2 минуты) - увеличено для избежания лимитов прокси
 
 // Настройки React Query
-export const QUERY_STALE_TIME = 1000 * 60 * 5; // 5 минут
+export const QUERY_STALE_TIME = 1000 * 60 * 10; // 10 минут - данные считаются свежими 10 минут
 export const QUERY_RETRY_COUNT = 2;
 
 // Настройки Intersection Observer

@@ -8,35 +8,35 @@ export function Header() {
   const [isActive, setActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleClass = () => {
-    setActive(!isActive);
-  };
+    const toggleClass = () => {
+        setActive(!isActive);
+      };
 
-  useEffect(() => {
-    const handleScroll = () => {
+      useEffect(() => {
+        const handleScroll = () => {
       setIsScrolled(window.pageYOffset > SCROLL_THRESHOLD);
-    };
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div className={`${styles.header} ${isScrolled ? styles.header__scroll : ''}`}>
-      <div className={styles.container}>
-        <div
-          className={`${styles.burger} ${isActive ? styles.burger__active : ''}`}
+    return (
+        <div className={`${styles.header} ${isScrolled ? styles.header__scroll : ''}`}>
+            <div className={styles.container}>
+                <div 
+                className={`${styles.burger} ${isActive ? styles.burger__active : ''}`} 
           onClick={toggleClass}
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div
-          className={`${styles.menu} ${isActive ? styles.menu__active : ''}`}
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div
+                className={`${styles.menu} ${isActive ? styles.menu__active : ''}`}
           onClick={toggleClass}
-        >
-          <ul className={styles.menu__navigation}>
+                >
+                    <ul className={styles.menu__navigation}>
             <li className={styles.menu__navigation_li}>
               <Link to="/science">SCIENCE</Link>
             </li>
@@ -58,14 +58,14 @@ export function Header() {
             <li className={styles.menu__navigation_li}>
               <Link to="/sports">SPORTS</Link>
             </li>
-          </ul>
-        </div>
+                    </ul>
+                </div>
         <Link className={styles.logo__wrapper} to="/">
           <span className={styles.logo__title}>
             NEWS PUB <span className={styles.logo__small}>by Ju1ceBoy</span>
           </span>
         </Link>
-      </div>
-    </div>
+            </div>
+        </div>
   );
 }

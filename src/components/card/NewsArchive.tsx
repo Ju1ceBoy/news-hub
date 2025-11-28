@@ -59,7 +59,7 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
 
       {Object.entries(limitedArticlesByDay).map(([date, dayArticles]) => (
         <section key={date} className={styles.daySection}>
-          <motion.h2
+          <motion.h2 
             className={styles.dayHeader}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,13 +72,13 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
               year: 'numeric',
             })}
           </motion.h2>
-
+          
           <div className={styles.articlesGrid}>
             {dayArticles.map((article, index) => {
               const image = getBestImage(article.multimedia);
-
+              
               return (
-                <motion.article
+                <motion.article 
                   key={`${date}-${index}`}
                   className={styles.articleCard}
                   initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
                 >
                   {image && (
                     <div className={styles.imageContainer}>
-                      <img
+                      <img 
                         src={getFullImageUrl(image.url)}
                         alt={image.caption || article.headline.main}
                         className={styles.articleImage}
@@ -100,7 +100,7 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
                       )}
                     </div>
                   )}
-
+                  
                   <div className={styles.articleContent}>
                     <h3>{article.headline.main}</h3>
                     <p>{article.abstract}</p>
@@ -128,7 +128,7 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
 
       {/* Сообщение о конце списка */}
       {!hasMore && articles && articles.length > 0 && (
-        <motion.div
+        <motion.div 
           className={styles.endMessage}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

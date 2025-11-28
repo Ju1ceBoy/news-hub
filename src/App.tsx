@@ -5,11 +5,11 @@ import styles from "./styles/Main.module.scss";
 
 function App() {
   return (
-    <Router>
+      <Router>
       <Header />
-      <div className={styles.mainContent}>
-        <Routes>
-          <Route path="/" element={<NewsArchive />} />
+        <div className={styles.mainContent}>
+          <Routes>
+            <Route path="/" element={<NewsArchive />} />
           <Route path="/general" element={<NewsArchive year={2025} month={3} />} />
           <Route path="/science" element={<NewsArchive year={2025} month={3} />} />
           <Route path="/entertaiment" element={<NewsArchive year={2025} month={3} />} />
@@ -17,9 +17,9 @@ function App() {
           <Route path="/business" element={<NewsArchive year={2025} month={3} />} />
           <Route path="/health" element={<NewsArchive year={2025} month={3} />} />
           <Route path="/sports" element={<NewsArchive year={2025} month={3} />} />
-        </Routes>
-      </div>
-    </Router>
+          </Routes>
+        </div>
+      </Router>
   );
 }
 

@@ -28,6 +28,13 @@ $color-accent: #878787;
   margin-bottom: 20px;
 }
 
+.rateLimitHint {
+  font-size: 0.9rem;
+  color: $color-text-secondary;
+  font-style: italic;
+  margin-top: -10px;
+}
+
 .retryButton {
   padding: 12px 24px;
   background-color: $color-accent;

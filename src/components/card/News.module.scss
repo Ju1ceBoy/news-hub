@@ -11,10 +11,10 @@ $color-error: #a87d76;             // Цвет ошибки
 
 /* Базовые стили контейнера */
 .news__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
   background: linear-gradient(
     to bottom,
     $color-background,
@@ -23,32 +23,32 @@ $color-error: #a87d76;             // Цвет ошибки
   background-color: $color-background;
   color: $color-text-primary;
   min-height: 100vh;
-}
-
-.lastUpdate {
-  text-align: right;
+  }
+  
+  .lastUpdate {
+    text-align: right;
   color: $color-text-secondary;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.daySection {
-  margin-bottom: 40px;
-}
-
-.dayHeader {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .daySection {
+    margin-bottom: 40px;
+  }
+  
+  .dayHeader {
   color: $color-text-primary;
   border-bottom: 1px solid $color-accent;
   padding-bottom: 0.5rem;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
   font-weight: bold;
   letter-spacing: 0.5px;
-}
-
-.articlesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  }
+  
+  .articlesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 /* Карточки новостей */
@@ -71,12 +71,12 @@ $color-error: #a87d76;             // Цвет ошибки
   }
 
   h3 {
-    color: $color-text-primary;
-  }
+  color: $color-text-primary;
+}
 
   p {
-    color: $color-text-secondary;
-    line-height: 1.6;
+  color: $color-text-secondary;
+  line-height: 1.6;
   }
 }
 
@@ -111,14 +111,14 @@ $color-error: #a87d76;             // Цвет ошибки
   border-radius: 8px 8px 0 0;
   margin-bottom: 15px;
   background: #252525;
-
+  
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.9;
     transition: opacity 0.3s, transform 0.3s ease-in-out;
-
+    
     &:hover {
       opacity: 1;
     }
