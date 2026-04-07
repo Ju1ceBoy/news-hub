@@ -3,7 +3,7 @@ import { useFetchArticles } from '../../hooks/useFetchArticles';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
 import { useAutoRefresh } from '../../hooks/useAutoRefresh';
 import { groupArticlesByDay, sortDatesDescending, sortArticlesByDate, limitArticlesByCount } from '../../utils/articleUtils';
-import { getBestImage, getFullImageUrl } from '../../utils/imageUtils';
+import { getBestImage } from '../../utils/imageUtils';
 import { LoadingSpinner } from '../common/LoadingSpinner';
 import { ErrorDisplay } from '../common/ErrorDisplay';
 import { ArticleWithMultimedia } from '../../types/article';
@@ -15,7 +15,7 @@ interface NewsArchiveProps {
   month?: number;
 }
 
-function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
+function NewsArchive({ year = 2026, month = 1 }: NewsArchiveProps) {
   const { data: articles, isLoading, isError, error, refetch } = useFetchArticles(year, month);
   const { lastUpdate } = useAutoRefresh(refetch);
   
@@ -90,7 +90,7 @@ function NewsArchive({ year = 2025, month = 3 }: NewsArchiveProps) {
                   {image && (
                     <div className={styles.imageContainer}>
                       <img 
-                        src={getFullImageUrl(image.url)}
+                        src={image.url}
                         alt={image.caption || article.headline.main}
                         className={styles.articleImage}
                         loading="lazy"

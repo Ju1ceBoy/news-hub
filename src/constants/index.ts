@@ -1,6 +1,5 @@
 // API конфигурация
-export const NYT_API_BASE_URL = 'https://api.nytimes.com/svc/archive/v1';
-export const CORS_PROXY_URL = 'https://corsproxy.io/?';
+export const NYT_API_BASE_URL = '/nyt-api/archive/v1';
 
 // Настройки загрузки
 export const INITIAL_ARTICLES_COUNT = 5;

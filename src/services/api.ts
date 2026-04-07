@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { Article, ApiResponse } from '../types/article';
-import { NYT_API_BASE_URL, CORS_PROXY_URL } from '../constants';
+import { NYT_API_BASE_URL } from '../constants';
 
 const NYT_API_KEY = import.meta.env.VITE_NYT_API_KEY;
 
@@ -13,10 +13,9 @@ export class RateLimitError extends Error {
 
 export const fetchArticles = async (year: number, month: number): Promise<Article[]> => {
   const apiUrl = `${NYT_API_BASE_URL}/${year}/${month}.json?api-key=${NYT_API_KEY}`;
-  const proxyUrl = `${CORS_PROXY_URL}${encodeURIComponent(apiUrl)}`;
 
   try {
-    const response = await axios.get<ApiResponse>(proxyUrl, {
+    const response = await axios.get<ApiResponse>(apiUrl, {
       headers: {
         Accept: 'application/json',
       },

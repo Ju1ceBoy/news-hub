@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/nyt-api/:path*", "destination": "https://api.nytimes.com/svc/:path*" }
+  ]
+}
