@@ -44,7 +44,7 @@ export function Header() {
                           <Link to="/science">SCIENCE</Link>
                         </li>
                         <li className={styles.menu__navigation_li}>
-                          <Link to="/entertaiment">ENTERTAINMENT</Link>
+                          <Link to="/entertainment">ENTERTAINMENT</Link>
                         </li>
                         <li className={styles.menu__navigation_li}>
                           <Link to="/technology">TECHNOLOGY</Link>

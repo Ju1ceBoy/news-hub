@@ -10,13 +10,13 @@ function App() {
         <div className={styles.mainContent}>
           <Routes>
           <Route path="/" element={<NewsArchive />} />
-          <Route path="/general" element={<NewsArchive year={2025} month={1} />} />
-          <Route path="/science" element={<NewsArchive year={2025} month={2} />} />
-          <Route path="/entertaiment" element={<NewsArchive year={2025} month={3} />} />
-          <Route path="/technology" element={<NewsArchive year={2025} month={4} />} />
-          <Route path="/business" element={<NewsArchive year={2025} month={5} />} />
-          <Route path="/health" element={<NewsArchive year={2025} month={6} />} />
-          <Route path="/sports" element={<NewsArchive year={2025} month={7} />} />
+          <Route path="/general" element={<NewsArchive />} />
+          <Route path="/science" element={<NewsArchive category="science" />} />
+          <Route path="/entertainment" element={<NewsArchive category="entertainment" />} />
+          <Route path="/technology" element={<NewsArchive category="technology" />} />
+          <Route path="/business" element={<NewsArchive category="business" />} />
+          <Route path="/health" element={<NewsArchive category="health" />} />
+          <Route path="/sports" element={<NewsArchive category="sports" />} />
           </Routes>
         </div>
       </Router>

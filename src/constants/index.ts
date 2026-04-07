@@ -19,3 +19,13 @@ export const INTERSECTION_THRESHOLD = 0.1;
 // Минимальная ширина изображения
 export const MIN_IMAGE_WIDTH = 600;
 
+// Маппинг категорий на section_name из NYT API
+export const CATEGORY_SECTIONS: Record<string, string[]> = {
+  science: ['Science', 'Climate'],
+  entertainment: ['Arts', 'Movies', 'Theater', 'Gameplay'],
+  technology: ['Technology'],
+  business: ['Business'],
+  health: ['Health', 'Well'],
+  sports: ['Sports'],
+};
+

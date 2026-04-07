@@ -7,25 +7,39 @@ import { getBestImage } from '../../utils/imageUtils';
 import { LoadingSpinner } from '../common/LoadingSpinner';
 import { ErrorDisplay } from '../common/ErrorDisplay';
 import { ArticleWithMultimedia } from '../../types/article';
-import { INITIAL_ARTICLES_COUNT } from '../../constants';
+import { INITIAL_ARTICLES_COUNT, CATEGORY_SECTIONS } from '../../constants';
 import styles from './News.module.scss';
 
 interface NewsArchiveProps {
   year?: number;
   month?: number;
+  category?: string;
 }
 
-function NewsArchive({ year = 2026, month = 1 }: NewsArchiveProps) {
+function getLastMonth() {
+  const now = new Date();
+  const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  return { year: prev.getFullYear(), month: prev.getMonth() + 1 };
+}
+
+const defaults = getLastMonth();
+
+function NewsArchive({ year = defaults.year, month = defaults.month, category }: NewsArchiveProps) {
   const { data: articles, isLoading, isError, error, refetch } = useFetchArticles(year, month);
   const { lastUpdate } = useAutoRefresh(refetch);
+
+  const filteredArticles = articles
+    ? category && CATEGORY_SECTIONS[category]
+      ? articles.filter((a) => CATEGORY_SECTIONS[category].includes(a.section_name))
+      : articles
+    : [];
   
   const { visibleCount, isLoadingMore, loaderRef, hasMore } = useInfiniteScroll({
-    totalItems: articles?.length || 0,
+    totalItems: filteredArticles.length,
     initialCount: INITIAL_ARTICLES_COUNT,
   });
 
-  // Группируем статьи по дням
-  const articlesByDay = groupArticlesByDay(articles || []);
+  const articlesByDay = groupArticlesByDay(filteredArticles);
   
   // Сортируем дни от новых к старым
   const sortedDates = sortDatesDescending(Object.keys(articlesByDay));
