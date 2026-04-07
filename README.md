@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# News Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[Live Demo](https://news-hub-eight-ruby.vercel.app)**
 
-Currently, two official plugins are available:
+![Preview](src/assets/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![React](https://img.shields.io/badge/React-18-61dafb?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-6-646cff?logo=vite)
+![Deploy](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel)
 
-## Expanding the ESLint configuration
+SPA-приложение для просмотра архива новостей New York Times.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Стек
 
-- Configure the top-level `parserOptions` property like this:
+- **React 18** + **TypeScript**
+- **Vite** — сборка и dev-сервер
+- **React Router** — клиентская маршрутизация
+- **React Query** — кэширование и управление серверным состоянием
+- **Redux** — глобальное состояние
+- **Framer Motion** — анимации
+- **SCSS Modules** — стили
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Запуск локально
+
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Создайте файл `.env` в корне проекта:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```
+VITE_NYT_API_KEY=ваш_ключ
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+API-ключ можно получить бесплатно на [developer.nytimes.com](https://developer.nytimes.com/get-started) (Archive API).
+
+```bash
+npm run dev
+```
+
+## Деплой
+
+Проект настроен для деплоя на **Vercel**. API-запросы проксируются через Vercel Rewrites (`vercel.json`), что решает проблему CORS.
+
+В настройках проекта на Vercel добавьте переменную окружения `VITE_NYT_API_KEY`.
+
+Каждый пуш в `main` автоматически запускает деплой.
+
+## Структура проекта
+
+```
+src/
+├── assets/fonts/       # Локальные шрифты (Lato)
+├── components/
+│   ├── card/           # Компоненты новостных карточек
+│   ├── common/         # Общие компоненты (спиннер, ошибки)
+│   └── header/         # Шапка с навигацией
+├── constants/          # Конфигурация приложения
+├── hooks/              # Кастомные хуки
+├── services/           # Работа с API
+├── styles/             # Глобальные стили
+├── types/              # TypeScript типы
+└── utils/              # Утилиты
 ```

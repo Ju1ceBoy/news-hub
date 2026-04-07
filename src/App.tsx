@@ -9,7 +9,7 @@ function App() {
       <Header />
         <div className={styles.mainContent}>
           <Routes>
-            <Route path="/" element={<NewsArchive />} />
+          <Route path="/" element={<NewsArchive />} />
           <Route path="/general" element={<NewsArchive year={2025} month={1} />} />
           <Route path="/science" element={<NewsArchive year={2025} month={2} />} />
           <Route path="/entertaiment" element={<NewsArchive year={2025} month={3} />} />
