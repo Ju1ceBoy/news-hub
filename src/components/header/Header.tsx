@@ -6,13 +6,20 @@ import { useTheme } from "../../hooks/useTheme";
 
 const SCROLL_THRESHOLD = 70;
 
-export function Header() {
+interface HeaderProps {
+  onMenuToggle?: (isOpen: boolean) => void;
+}
+
+export function Header({ onMenuToggle }: HeaderProps) {
   const [isActive, setActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
     const toggleClass = () => {
-        setActive(!isActive);
+        const next = !isActive;
+        setActive(next);
+        onMenuToggle?.(next);
+        document.body.style.overflow = next ? 'hidden' : '';
       };
 
       useEffect(() => {
