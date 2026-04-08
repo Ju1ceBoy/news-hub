@@ -1,12 +1,15 @@
 import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ThemeToggle } from "../common/ThemeToggle";
+import { useTheme } from "../../hooks/useTheme";
 
 const SCROLL_THRESHOLD = 70;
 
 export function Header() {
   const [isActive, setActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
     const toggleClass = () => {
         setActive(!isActive);
@@ -65,6 +68,9 @@ export function Header() {
             NEWS HUB <span className={styles.logo__small}>by Ju1ceBoy</span>
           </span>
         </Link>
+                <div className={styles.themeToggle}>
+                  <ThemeToggle theme={theme} onToggle={toggleTheme} />
+                </div>
             </div>
         </div>
   );

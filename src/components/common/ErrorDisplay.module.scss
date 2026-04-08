@@ -1,15 +1,10 @@
-$color-error: #a87d76;
-$color-text-primary: #e0e0e0;
-$color-text-secondary: #b0b0b0;
-$color-accent: #878787;
-
 .errorContainer {
   text-align: center;
   padding: 40px;
   max-width: 500px;
   margin: 0 auto;
-  background: rgba($color-error, 0.1);
-  border-left: 3px solid $color-error;
+  background: rgba(168, 125, 118, 0.1);
+  border-left: 3px solid var(--color-error);
   border-radius: 8px;
 }
 
@@ -24,21 +19,21 @@ $color-accent: #878787;
 }
 
 .errorContainer p {
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
   margin-bottom: 20px;
 }
 
 .rateLimitHint {
   font-size: 0.9rem;
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
   font-style: italic;
   margin-top: -10px;
 }
 
 .retryButton {
   padding: 12px 24px;
-  background-color: $color-accent;
-  color: $color-text-primary;
+  background-color: var(--color-button-bg);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -46,7 +41,6 @@ $color-accent: #878787;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #717171;
+    background-color: var(--color-button-hover);
   }
 }
-

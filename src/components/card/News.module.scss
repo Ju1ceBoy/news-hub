@@ -1,15 +1,3 @@
-/* Нейтральная темная цветовая палитра */
-$color-background: #1a1a1a;        // Темный фон
-$color-surface: #2d2d2d;           // Поверхности/карточки
-$color-text-primary: #e0e0e0;      // Основной текст
-$color-text-secondary: #b0b0b0;    // Вторичный текст
-$color-accent: #878787;            // Приглушенный зеленый акцент
-$color-border: #3d3d3d;            // Границы
-$color-hover: #383838;             // Состояние hover
-$color-meta: #8a8a8a;              // Мета-информация
-$color-error: #a87d76;             // Цвет ошибки
-
-/* Базовые стили контейнера */
 .news__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -17,17 +5,17 @@ $color-error: #a87d76;             // Цвет ошибки
     overflow: hidden;
   background: linear-gradient(
     to bottom,
-    $color-background,
-    #2a2a2a
+    var(--color-background),
+    var(--color-background-end)
   );
-  background-color: $color-background;
-  color: $color-text-primary;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
   min-height: 100vh;
   }
   
   .lastUpdate {
     text-align: right;
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
     font-size: 0.9rem;
     margin-bottom: 20px;
   }
@@ -37,8 +25,8 @@ $color-error: #a87d76;             // Цвет ошибки
   }
   
   .dayHeader {
-  color: $color-text-primary;
-  border-bottom: 1px solid $color-accent;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-accent);
   padding-bottom: 0.5rem;
     margin-bottom: 20px;
   font-weight: bold;
@@ -51,31 +39,30 @@ $color-error: #a87d76;             // Цвет ошибки
     gap: 20px;
 }
 
-/* Карточки новостей */
 .articleCard {
   display: flex;
   flex-direction: column;
-  background: $color-surface;
-  border: 1px solid $color-border;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--color-shadow);
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   cursor: pointer;
   will-change: transform;
 
   &:hover {
-    background-color: $color-hover;
+    background-color: var(--color-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 16px var(--color-shadow-hover);
   }
 
   h3 {
-  color: $color-text-primary;
+  color: var(--color-text-primary);
 }
 
   p {
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
   line-height: 1.6;
   }
 }
@@ -87,22 +74,21 @@ $color-error: #a87d76;             // Цвет ошибки
 .articleMeta {
   display: flex;
   justify-content: space-between;
-  color: $color-meta;
+  color: var(--color-meta);
   font-size: 0.9rem;
   margin-top: 15px;
 }
 
 .section {
-  color: $color-accent;
+  color: var(--color-accent);
   font-weight: 500;
 }
 
 .time {
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
   opacity: 0.8;
 }
 
-/* Изображения */
 .imageContainer {
   position: relative;
   width: 100%;
@@ -110,7 +96,7 @@ $color-error: #a87d76;             // Цвет ошибки
   overflow: hidden;
   border-radius: 8px 8px 0 0;
   margin-bottom: 15px;
-  background: #252525;
+  background: var(--color-image-bg);
   
   img {
     width: 100%;
@@ -133,14 +119,13 @@ $color-error: #a87d76;             // Цвет ошибки
   position: absolute;
   bottom: 8px;
   right: 8px;
-  background: rgba(0, 0, 0, 0.7);
-  color: $color-text-secondary;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.7rem;
 }
 
-/* Бесконечный скролл */
 .observerTarget {
   height: 50px;
   display: flex;
@@ -151,7 +136,7 @@ $color-error: #a87d76;             // Цвет ошибки
 
 .endMessage {
   text-align: center;
-  color: $color-text-secondary;
+  color: var(--color-text-secondary);
   padding: 30px;
   font-size: 1rem;
 }
